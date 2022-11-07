@@ -42,7 +42,7 @@ function thread(tareaId){
 3. Creamos el disparador manualmente (esto es necesario ya que de manera programática no funciona):
     1. Seleccionar en el panel lateral izquierdo "Activadores"
     2. Añadir Activador
-    3. Fijar las opciones tal y como se muestra en la imagen
+    3. Fijar las opciones tal y como se muestra en la imagen:
    
 ![Crear Disparador](https://user-images.githubusercontent.com/117653444/200328006-545302d6-6bdc-46c7-9afb-10d94040c2d5.png)
 
