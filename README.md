@@ -49,4 +49,4 @@ function thread(tareaId){
 4. Una vez creado el disparador, el programa se ejecutará de manera autónoma. Se puede ver el progreso de trabajo en la sección "Ejecuciones" y las tareas corriendo en la sección "Activadores".
 
 ## Licencia
-Universidad de La Rioja -¿MIT?
+Universidad de La Rioja
