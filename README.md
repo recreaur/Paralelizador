@@ -40,9 +40,9 @@ function thread(tareaId){
 }
 ```
 3. Creamos el disparador manualmente (esto es necesario ya que de manera programática no funciona):
-  a. Seleccionar en el panel lateral izquierdo "Activadores"
-  b. Añadir Activador
-  c. Fijar las opciones tal y como se muestra en la imagen
+    a. Seleccionar en el panel lateral izquierdo "Activadores"
+    * Añadir Activador
+    1. Fijar las opciones tal y como se muestra en la imagen
 ![Crear Disparador](https://user-images.githubusercontent.com/117653444/200328006-545302d6-6bdc-46c7-9afb-10d94040c2d5.png)
 
 4. Una vez creado el disparador, el programa se ejecutará de manera autónoma. Se puede ver el progreso de trabajo en la sección "Ejecuciones" y las tareas corriendo en la sección "Activadores".
