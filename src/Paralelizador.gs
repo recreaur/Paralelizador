@@ -13,12 +13,19 @@ const ENUMPROPERTIES = {
 };
 
 /**
+ * Este callback es la función que ejecutará el trabajo
+ *
+ * @callback workerCb
+ * @param {number} iteration - El índice de la iteración que ha de hacer
+ * @return {*} Puede devolver algo o no, pero el programa lo desecha
+ */
+/**
  * Función handler llamada cada X minutos 
  *
- * @param {Object} e - event object
- * @param {callback} func - Function passed as callback
- * @param {integer} iterations - Number of loops
- * @return {Array} - Los resultados de cada una de las iteraciones
+ * @param {object} e - event object
+ * @param {workerCb} func - Función worker pasada como callback
+ * @param {integer} iterations - Número de iteraciones
+ * @return {string[]} - Los resultados de cada una de las iteraciones
  */
 function manager(triggerUid, func, iterations, numThreads=16){
   const properties = PropertiesService.getUserProperties();
@@ -34,12 +41,6 @@ function manager(triggerUid, func, iterations, numThreads=16){
     properties.setProperty(ENUMPROPERTIES.TRIGGERS_IDS, JSON.stringify([])); 
     properties.setProperty(ENUMPROPERTIES.ALREADY_STARTED, 'true');
   }
-  
-      SpreadsheetApp
-        .openById('1Ju6x3A8sUOrYLxsRKWQRavacyAUf4IAPQErm_h8lCwY')
-        .getSheetByName('Registro')
-        .appendRow(["Manager", "A ver XX", new Date()]);
-
 
   //Si no hay iteraciones restantes, termina el programa
   try{
@@ -51,12 +52,8 @@ function manager(triggerUid, func, iterations, numThreads=16){
     if(iterationsLeft.length == 0 && iterationsExecuting == 0){
       Logger.log('Hemos Terminado');
       removeTrigger_(triggerUid);  // Borramos el trigger que llama al manager
-      removeAllTriggers('Paralelizador.runParallelThread');
+      removeAllTriggers('Paralelizador.runParallelThread');   // Borramos los triggers workers si hubiera
       removeProperties(); // Borramos propiedades
-          SpreadsheetApp
-        .openById('1Ju6x3A8sUOrYLxsRKWQRavacyAUf4IAPQErm_h8lCwY')
-        .getSheetByName('Registro')
-        .appendRow(["TERMINAMOSSSSSS", "A ver XX", new Date(), properties.getProperty(ENUMPROPERTIES.RESULTS)]);
     }
   }catch(e){
     Logger.log('No se pudo bloquear el almacén de llaves: ' + e);
@@ -80,7 +77,6 @@ function manager(triggerUid, func, iterations, numThreads=16){
     triggersIds.forEach(id => removeTrigger_(id));
   }
 }
-
 
 
 /**
