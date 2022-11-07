@@ -1,9 +1,8 @@
 /**
- * Develve el número de triggers que tenga la función
- * handler funcName
+ * Develve el número de triggers que tengan como función handler funcName
  * 
  * @param   {string} funcName - Nombre de la función
- * @returns {integer} Número de triggers
+ * @returns {number} Número de triggers
  */
 function getNumTriggers_(funcName='runParallelThread'){
   const triggers = ScriptApp.getScriptTriggers();
@@ -30,8 +29,7 @@ function removeTrigger_(triggerUid){
 
 
 /**
- * Borra todos los triggers con función handler
- * funcName
+ * Borra todos los triggers con función handler funcName
  * 
  * @param {string} triggerUid - The trigger UID
  */
@@ -69,9 +67,6 @@ function removeProperties(){
     Logger.log("No se pudo bloquear el almacén de propiedas" + e);
   }
 }
-
-
-
 
 
 
