@@ -17,6 +17,7 @@ Para copiar la la librería, pulsar en botón "Hacer una copia" ubicado en:
 
 ## Probar la librería
 Para probar la librería _Paralelizador_ Necesitamos crear 2 funciones y 1 disparador.
+En el siguiente ejemplo, tenemos la función `thread` que emula una carga de trabajo de un minuto y devuelve un resultado. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
 1. La función principal que será el handler del disparador
 ```javascript
 function testing(e) {
@@ -24,14 +25,20 @@ function testing(e) {
     e.triggerUid, 
     thread, //Función que realiza el trabajo
     100,    //Número de tareas que se van a lanzar
-    16      //Número de hilos (disparadores) que ejecutarán simultáneamente las tareas
+    10      //Número de hilos (triggers - máximo 19) que ejecutarán simultáneamente las tareas 
     );
 }
 ```
-2. La función autónoma que ejecutará una parte del trabajo.
+2. La función autónoma que ejecutará una parte del trabajo:
 ```javascript
-function thread(iteration){
+function thread(tareaId){
   Utilities.sleep(60000);
-  return "fLX" + iteration;
+  return "Iter: " + tareaId;
 }
 ```
+3. Creamos el disparador manualmente (esto es necesario ya que de manera programática no funciona):
+  a. Seleccionar en el panel lateral izquierdo "Activadores"
+  b. Añadir Activador
+  c. Fijar las opciones tal y como se muestra en la imagen
+![Crear Disparador](https://user-images.githubusercontent.com/117653444/200328006-545302d6-6bdc-46c7-9afb-10d94040c2d5.png)
+
