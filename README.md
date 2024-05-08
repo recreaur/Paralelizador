@@ -2,6 +2,24 @@
 _Paralelizador_ es una librería de [Google App Script](https://developers.google.com/google-apps/) que permite paralelizar procesos a través de _triggers_.
 Creado por la Universidad de La Rioja a través del proyecto de investigación RecREA 2022.
 
+##Funcionamiento
+
+Inicio: El usuario configura y activa un disparador que se ejecuta cada minuto.
+Invocación del disparador: Cuando se activa el disparador, este llama a la función principal que utiliza la librería.
+Inicialización de la librería: La función principal inicia la librería, especificando:
+El número de hilos (con un máximo de 19).
+El total de tareas a realizar.
+La función callback que se ejecutará en cada hilo.
+Distribución de tareas: La librería asigna tareas a cada hilo:
+Cada hilo ejecuta la función callback con un número de tarea específico.
+Se controla el tiempo de ejecución para no superar el límite de Google.
+Monitoreo de tareas: La librería verifica si todas las tareas han sido completadas.
+Finalización:
+Si todas las tareas están completas, se eliminan todos los disparadores y hilos.
+Si no, el proceso espera al próximo disparo del disparador para continuar con las tareas restantes.
+Cierre: Fin del proceso una vez que todas las tareas están finalizadas y los disparadores eliminados.
+![diagrama](https://github.com/recreaur/Paralelizador/assets/117653444/04f2cf0c-1e42-425e-99ff-932201be5fef)
+
 
 ## Añadir la librería a tu proyecto
 _Paralelizador_ para _Google App Script_ está disponible como una librería. Se debe incluir en un proyecto de la siguiente manera:
