@@ -27,7 +27,7 @@ Creado por la Universidad de La Rioja a través del proyecto de investigación R
 
 ## Añadir la librería a tu proyecto
 _Paralelizador_ para _Google App Script_ está disponible como una librería. Se debe incluir en un proyecto de la siguiente manera:
-1. Solicitar el acceso a la librería
+1. **Solicitar el acceso a la librería**
 2. Dentro del editor de un proyecto, en el panel lateral izquierdo, pulsar en la sección "Bibliotecas" el botón "+"
 3. Introducir el ID de secuencia de comandos `1Tqxfvt_bD-RugtOuaRxrv1AAJ9-iyWaX8kuPHsSp9mwtkJYOdb4wjgk-` en la caja de texto > Pulsar "Buscar"
 4. Escoger dentro del desplegable la última versión y elegir `Paralelizador` como identificador
@@ -42,24 +42,49 @@ Para copiar la la librería, pulsar en el botón "Hacer una copia" ubicado en:
 
 ## Probar la librería
 Para probar la librería _Paralelizador_ Necesitamos crear 2 funciones y 1 disparador.
-En el siguiente ejemplo, tenemos la función `thread` que emula una carga de trabajo de un minuto y devuelve un resultado. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
-1. La función principal que será el handler del disparador
+En el siguiente ejemplo, tenemos la función `callBack` que emula una carga de trabajo de un minuto y devuelve un resultado. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
+1. El código es el siguiente:
 ```javascript
-function testing(e) {
-  Paralelizador.manager(
-    e.triggerUid, 
-    thread, //Función que realiza el trabajo
-    100,    //Número de tareas que se van a lanzar
-    10      //Número de hilos (triggers - máximo 19) que ejecutarán simultáneamente las tareas 
-    );
-}
-```
-2. La función autónoma que ejecutará una parte del trabajo:
-```javascript
-function thread(tareaId){
+/************* COMPLETAR POR EL USUARIO *************/
+
+//Número de tareas que se van a lanzar:
+const NUM_TAREAS = 100; 
+//Número de hilos (triggers - máximo 19) que ejecutarán simultáneamente las tareas:
+const NUM_HILOS = 10;   
+
+//Función que será llamada en cada tarea:
+function callBack(tareaId){   
   Utilities.sleep(60000);
-  return "Iter: " + tareaId;
+  SpreadsheetApp.openById('1uvvL_lkbbS0t0vCnM8qC3vF1SKInENr--H5WGpO3yD8').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
+  //SpreadsheetApp.openById('codigo_archivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
+  return;
 }
+
+
+
+/************* NO TOCAR EL SIGUIENTE CÓDIGO *************/
+
+/**
+ * Función que se ejecuta cada minuto mediante un activador creado de manera manual.
+ * Esta función invoca el manager de la librería 'Paralelizador' para ejecutar tareas distribuidas.
+ *
+ * @param {GoogleAppsScript.Script.EventObject} e - El objeto evento proporcionado por el activador.
+ */
+function funcionActivador(e) {
+  var newExecution = false;
+  const properties = PropertiesService.getUserProperties();
+  const lock = LockService.getUserLock();  
+  if(properties.getProperty(e.triggerUid) != e.triggerUid){
+    try{
+      lock.waitLock(15000); 
+      properties.setProperty(e.triggerUid, e.triggerUid);
+      newExecution = true;
+    }catch(e){Logger.log(e)}
+  }
+  
+  Paralelizador.manager(e.triggerUid, callBack, newExecution, NUM_TAREAS, NUM_HILOS);
+}
+
 ```
 3. Creamos el disparador manualmente (esto es necesario ya que de manera programática no funciona):
     1. Seleccionar en el panel lateral izquierdo "Activadores"
