@@ -7,14 +7,14 @@ Creado por la Universidad de La Rioja a través del proyecto de investigación R
 1. Inicio: El usuario configura y activa un disparador que se ejecuta cada minuto.
 2. Invocación del disparador: Cuando se activa el disparador, este llama a la función principal que utiliza la librería.
 3. Inicialización de la librería: La función principal inicia la librería, especificando:
-    -El número de hilos (con un máximo de 19).
-    -El total de tareas a realizar.
-    -La función callback que se ejecutará en cada hilo.
-4. Distribución de tareas: La librería asigna tareas a cada hilo:
+    - El número de hilos (con un máximo de 19).
+    - El total de tareas a realizar.
+    - La función callback que se ejecutará en cada hilo.
+5. Distribución de tareas: La librería asigna tareas a cada hilo:
   a. Cada hilo ejecuta la función callback con un número de tarea específico.
   b. Se controla el tiempo de ejecución para no superar el límite de Google.
-5. Monitoreo de tareas: La librería verifica si todas las tareas han sido completadas.
-6. Finalización:
+6. Monitoreo de tareas: La librería verifica si todas las tareas han sido completadas.
+7. Finalización:
   - Si todas las tareas están completas, se eliminan todos los disparadores y hilos.
   - Si no, el proceso espera al próximo disparo del disparador para continuar con las tareas restantes.
 7. Cierre: Fin del proceso una vez que todas las tareas están finalizadas y los disparadores eliminados.
