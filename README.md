@@ -55,7 +55,7 @@ const NUM_HILOS = 10;
 //Función que será llamada en cada tarea:
 function callBack(tareaId){   
   Utilities.sleep(60000);
-  SpreadsheetApp.openById('codigo_archivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
+  SpreadsheetApp.openById('codigoDeTuArchivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
   return;
 }
 
@@ -86,7 +86,7 @@ function funcionActivador(e) {
 3. **Ajusta los parámetros de configuración según tus necesidades:**
    - `NUM_TAREAS`: Número total de tareas a ejecutar.
    - `NUM_HILOS`: Número de hilos de ejecución paralela, con un máximo de 19.
-   - `callBack`: Implementa la función según tus necesidades. En el ejemplo, la función _callBack_emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
+   - `callBack`: Implementa la función según tus necesidades. En el ejemplo, la función _callBack_ emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
 
 4. **Crea manualmente un disparador que ejecute la función _funcionActivador_ cada minuto.**
     a. Seleccionar en el panel lateral izquierdo "Activadores"
