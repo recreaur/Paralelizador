@@ -17,9 +17,11 @@ Creado por la Universidad de La Rioja a través del proyecto de investigación R
 7. **Finalización**:
     - Si todas las tareas están completas, se eliminan todos los disparadores y hilos.
     - Si no, el proceso espera al próximo disparo del disparador para continuar con las tareas restantes.
-7. Cierre: Fin del proceso una vez que todas las tareas están finalizadas y los disparadores eliminados.
+7. **Cierre**: Fin del proceso una vez que todas las tareas están finalizadas y los disparadores eliminados.
 <br /><br />
-<img src="https://github.com/recreaur/Paralelizador/assets/117653444/04f2cf0c-1e42-425e-99ff-932201be5fef" alt="Diagrama" style="width: 50%;">
+<div style="text-align: center;">
+    <img src="https://github.com/recreaur/Paralelizador/assets/117653444/04f2cf0c-1e42-425e-99ff-932201be5fef" alt="Diagrama" style="width: 50%;">
+</div>
 
 
 
