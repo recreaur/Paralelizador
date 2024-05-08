@@ -1,5 +1,5 @@
 # Paralelizador
-_Paralelizador_ es una librería de [Google App Script](https://developers.google.com/google-apps/) que permite paralelizar procesos a través de _triggers_.
+_Paralelizador_ es una librería diseñada para facilitar la computación distribuida en [Google App Script](https://developers.google.com/google-apps/), permitiendo ejecutar múltiples tareas en paralelo, lo que puede reducir significativamente el tiempo de ejecución comparado con el procesamiento secuencial.
 Creado por la Universidad de La Rioja a través del proyecto de investigación RecREA 2022.
 
 ## Funcionamiento
@@ -39,9 +39,13 @@ _Paralelizador_ para _Google App Script_ está disponible como una librería. Se
 
 
 ## Probar la librería
-Para probar la librería _Paralelizador_ Necesitamos crear 2 funciones y 1 disparador.
-En el siguiente ejemplo, tenemos la función `callBack` que emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
-1. El código es el siguiente:
+Para probar la librería _Paralelizador_ podemos utilizar el código base que tenemos a continuación.
+En el, tenemos la función `callBack` que emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
+
+Para probar la librería, sigue estos pasos:
+
+1. **Crea un nuevo proyecto en Google Apps Script.**
+2. **Copia y pega el código base proporcionado más abajo en el editor de script.**
 ```javascript
 /************* COMPLETAR POR EL USUARIO *************/
 
@@ -57,8 +61,6 @@ function callBack(tareaId){
   //SpreadsheetApp.openById('codigo_archivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
   return;
 }
-
-
 
 /************* NO TOCAR EL SIGUIENTE CÓDIGO *************/
 
@@ -84,10 +86,14 @@ function funcionActivador(e) {
 }
 
 ```
-3. Creamos el disparador manualmente (esto es necesario ya que de manera programática no funciona):
-    1. Seleccionar en el panel lateral izquierdo "Activadores"
-    2. Añadir Activador
-    3. Fijar las opciones tal y como se muestra en la imagen:
+3. **Ajusta los parámetros de configuración según tus necesidades:**
+   - `NUM_TAREAS`: Número total de tareas a ejecutar.
+   - `NUM_HILOS`: Número de hilos de ejecución paralela, con un máximo de 19.
+   - `callBack`: Implementa la función según tus necesidades
+4. **Crea manualmente un disparador que ejecute la función _funcionActivador_ cada minuto.**
+    a. Seleccionar en el panel lateral izquierdo "Activadores"
+    b. Añadir Activador
+    c. Fijar las opciones tal y como se muestra en la imagen:
    
 ![Crear Disparador](https://user-images.githubusercontent.com/117653444/200328006-545302d6-6bdc-46c7-9afb-10d94040c2d5.png)
 
