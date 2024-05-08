@@ -40,13 +40,10 @@ _Paralelizador_ para _Google App Script_ está disponible como una librería. Se
 
 
 ## Probar la librería
-Para probar la librería _Paralelizador_ podemos utilizar el código base que tenemos a continuación.
-En el, tenemos la función `callBack` que emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
-
 Para probar la librería, sigue estos pasos:
 
 1. **Crea un nuevo proyecto en Google Apps Script.**
-2. **Copia y pega el código base proporcionado más abajo en el editor de script.**
+2. **Copia y pega el código base en el editor de script.**
 ```javascript
 /************* COMPLETAR POR EL USUARIO *************/
 
@@ -58,8 +55,7 @@ const NUM_HILOS = 10;
 //Función que será llamada en cada tarea:
 function callBack(tareaId){   
   Utilities.sleep(60000);
-  SpreadsheetApp.openById('1uvvL_lkbbS0t0vCnM8qC3vF1SKInENr--H5WGpO3yD8').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
-  //SpreadsheetApp.openById('codigo_archivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
+  SpreadsheetApp.openById('codigo_archivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
   return;
 }
 
@@ -90,7 +86,8 @@ function funcionActivador(e) {
 3. **Ajusta los parámetros de configuración según tus necesidades:**
    - `NUM_TAREAS`: Número total de tareas a ejecutar.
    - `NUM_HILOS`: Número de hilos de ejecución paralela, con un máximo de 19.
-   - `callBack`: Implementa la función según tus necesidades
+   - `callBack`: Implementa la función según tus necesidades. En el ejemplo, la función _callBack_emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
+
 4. **Crea manualmente un disparador que ejecute la función _funcionActivador_ cada minuto.**
     a. Seleccionar en el panel lateral izquierdo "Activadores"
     b. Añadir Activador
