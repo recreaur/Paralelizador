@@ -1,5 +1,5 @@
 # Paralelizador
-_Paralelizador_ es una librería diseñada para facilitar la computación distribuida en [Google App Script](https://developers.google.com/google-apps/), permitiendo ejecutar múltiples tareas en paralelo, lo que puede reducir significativamente el tiempo de ejecución comparado con el procesamiento secuencial.
+_Paralelizador_ es una librería diseñada para facilitar la computación distribuida en [Google App Script](https://developers.google.com/google-apps/), permitiendo ejecutar múltiples tareas en paralelo. Esto que puede reducir significativamente el tiempo de ejecución total comparado con el procesamiento secuencial.<br />
 Creado por la Universidad de La Rioja a través del proyecto de investigación RecREA 2022.
 
 ## Funcionamiento
