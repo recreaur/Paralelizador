@@ -11,7 +11,7 @@ Creado por la Universidad de La Rioja a través del proyecto de investigación R
     - El total de tareas a realizar.
     - La función callback que se ejecutará en cada hilo.
 5. **Distribución de tareas**: La librería asigna tareas a cada hilo:
-    - Cada hilo ejecuta la función callback con un número de tarea específico.
+    - Cada hilo ejecuta la función callback recibiendo como parámetro de entrada el número de tarea específico.
     - Se controla el tiempo de ejecución para no superar el límite de Google.
 6. **Monitoreo de tareas**: La librería verifica si todas las tareas han sido completadas.
 7. **Finalización**:
@@ -42,7 +42,7 @@ Para copiar la la librería, pulsar en el botón "Hacer una copia" ubicado en:
 
 ## Probar la librería
 Para probar la librería _Paralelizador_ Necesitamos crear 2 funciones y 1 disparador.
-En el siguiente ejemplo, tenemos la función `callBack` que emula una carga de trabajo de un minuto y devuelve un resultado. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
+En el siguiente ejemplo, tenemos la función `callBack` que emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
 1. El código es el siguiente:
 ```javascript
 /************* COMPLETAR POR EL USUARIO *************/
