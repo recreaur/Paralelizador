@@ -11,18 +11,12 @@ const ENUMPROPERTIES = {
   TRIGGERS_IDS : PROPERTIES_PREFIX + 'triggersIds',
 };
 
+
 /**
- * Este callback es la función que ejecutará el trabajo
- *
- * @callback workerCb
- * @param {number} iteration - El índice de la iteración que ha de hacer
- * @return {*} Puede devolver algo o no, pero el programa lo desecha
- */
-/**
- * Función handler llamada cada X minutos 
+ * Función handler llamada cada minuto 
  *
  * @param {integer} triggerUid - Uid of the trigger
- * @param {workerCb} func - Función worker pasada como callback
+ * @param {Function} func - Función worker pasada como callback
  * @param {boolean} newExecution - Variable usada para saber si es una nueva ejecución
  * @param {integer} iterations - Número de iteraciones
  * @return {string[]} - Los resultados de cada una de las iteraciones
@@ -80,7 +74,7 @@ function manager(triggerUid, func, newExecution, iterations, numThreads){
 
   try{
     for(i=currentNumTriggers; i<numThreads; i++){
-      var trigger = ScriptApp.newTrigger('Paralelizador.runParallelThread')//"Paralelizacion.runParallelThread")
+      var trigger = ScriptApp.newTrigger('Paralelizador.runParallelThread')
             .timeBased()
             .at(new Date(currTime))
             .create();
