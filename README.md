@@ -93,9 +93,9 @@ function funcionActivador(e) {
     b. Añadir Activador
     c. Fijar las opciones tal y como se muestra en la imagen:
    
-![Crear Disparador](https://user-images.githubusercontent.com/117653444/200328006-545302d6-6bdc-46c7-9afb-10d94040c2d5.png)
+![captura-creacion-activador](https://github.com/recreaur/Paralelizador/assets/117653444/183fdba7-250e-4089-90fd-49b0dc24e564)
 
 4. Una vez creado el disparador, el programa se ejecutará de manera autónoma. Se puede ver el progreso de trabajo en la sección "Ejecuciones" y las tareas corriendo en la sección "Activadores".
 
 ## Licencia
-Universidad de La Rioja
+Este software es propiedad de la Universidad de La Rioja.
