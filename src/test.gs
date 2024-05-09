@@ -7,7 +7,7 @@ const NUM_HILOS = 10;
 
 //Función que será llamada en cada tarea:
 function callBack(tareaId){   
-  Utilities.sleep(60000);
+  Utilities.sleep(60000);  //Simulamos un tiempo de trabajo de 1 minuto
   SpreadsheetApp.openById('codigoDeTuArchivo').getActiveSheet().appendRow([String(tareaId), 'Tarea terminada']);
   return;
 }
