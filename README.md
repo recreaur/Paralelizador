@@ -89,7 +89,7 @@ function funcionActivador(e) {
    - `callBack`: Implementa la función según tus necesidades. En el ejemplo, la función _callBack_ emula una carga de trabajo de un minuto y registra el resultado en un _Spreadsheet_ de _Google_. La queremos lanzar 100 veces, lo que en secuencial serían 100 minutos, pero vamos a distribuirlo en 10 hilos que se ejecutarán en paralelo, por lo que debería tardar en torno a 10 minutos.
 
 4. **Crea manualmente un disparador que ejecute la función _funcionActivador_ cada minuto.**
-  <ol type="a">
+  <ol type="a" style="margin-left: 20px;">>
    <li>Seleccionar en el panel lateral izquierdo "Activadores"</li>
    <li>Añadir Activador</li>
    <li>Fijar las opciones tal y como se muestra en la imagen:</li>
