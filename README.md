@@ -90,7 +90,7 @@ function funcionActivador(e) {
 
 4. **Crea manualmente un disparador que ejecute la función _funcionActivador_ cada minuto.**
   <ol type="a">
-   <li></li>Seleccionar en el panel lateral izquierdo "Activadores"</li>
+   <li>Seleccionar en el panel lateral izquierdo "Activadores"</li>
    <li>Añadir Activador</li>
    <li>Fijar las opciones tal y como se muestra en la imagen:</li>
   </ol>
