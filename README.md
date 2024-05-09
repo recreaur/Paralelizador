@@ -93,7 +93,7 @@ function funcionActivador(e) {
     b. Añadir Activador
     c. Fijar las opciones tal y como se muestra en la imagen:
    
-![captura-creacion-activador](https://github.com/recreaur/Paralelizador/assets/117653444/183fdba7-250e-4089-90fd-49b0dc24e564)
+![captura-creacion-activador](https://github.com/recreaur/Paralelizador/assets/117653444/10078a02-d439-41f0-bf49-f5089006a254)
 
 4. Una vez creado el disparador, el programa se ejecutará de manera autónoma. Se puede ver el progreso de trabajo en la sección "Ejecuciones" y las tareas corriendo en la sección "Activadores".
 
